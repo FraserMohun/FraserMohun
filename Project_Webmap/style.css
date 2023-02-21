@@ -1,0 +1,438 @@
+@import "compass/css3";
+
+body { 
+  margin: 0; 
+  padding: 0; 
+}
+#map { 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  width: 100%; 
+}
+h2 {
+  margin: 10px;
+  font-size: 16px;
+  font-family: 'Unbounded', cursive;
+}
+h3 {
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 22px;
+  color: #000;
+  padding: 2px;
+}
+h4 {
+  padding: 0px;
+  font-size: 14px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 14px;
+}
+h7 {
+	font-size: 30px;
+	margin: 0;
+  top: 10px;
+  white-space: nowrap;
+  align-items: center;
+	justify-content: center;
+}
+h8 {
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  padding: 0px;
+  font-family: 'Unbounded', cursive;
+}
+h9 {
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 20px;
+  color: #fff;
+  padding: 0px;
+  font-family: 'Unbounded', cursive;
+}
+h10 {
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 20px;
+  color: #fff;
+  padding: 0px;
+  font-family: 'Unbounded', cursive;
+}
+p {
+  font-size: 14px;
+  font-family: 'Unbounded', cursive;
+  margin-top: 30px;
+  background-position-x: center;
+  background-position-y: center;
+  background-attachment: fixed;
+  overflow: auto;
+  text-align: center;
+}
+.map-overlay {
+  position: absolute;
+  text-align:center;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  font-family: 'Unbounded', cursive;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+#title {
+  top: 10px;
+  left: 350px;
+  height: 125px;
+  width: 275px;
+  padding: 5px;
+  background: rgba(0,0,0,0);
+  text-shadow:2px 2px 4px #e69219;
+}
+
+
+/*** Continuous Factbox ***/
+#features {
+  margin: 0px;
+  margin-bottom: 5px;
+  height: 55px;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-style: double;
+  border-width: 4px;
+  border-color: #fff;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #fff;
+  background: linear-gradient(180deg, #e69219, #7f4b15, #e69219);
+  box-shadow: 0 5px #999;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.marqueeStyle2 {
+  display:inline-block;
+  /* Apply animation to this element */
+  -webkit-animation: scrolling-left2 90s ease-in infinite;
+  animation: scrolling-left2 90s ease-in infinite;
+  animation-delay: 1s;
+}
+/* scrolling-left is continuous/repeatly text */
+@keyframes scrolling-left1 {
+    50% {transform: translateX(10%);
+        -webkit-transform: translateX(100%);}
+      100% {transform: translateX(-100%);
+          -webkit-transform: translateX(-50%);}
+}
+
+@-webkit-keyframes scrolling-left1 {
+    20% {-webkit-transform: translateX(100%);}
+      100% {-webkit-transform: translateX(-100%);}
+}
+@-webkit-keyframes scrolling-left2 {
+    90% {-webkit-transform: translateX(-100%);}
+      100% {-webkit-transform: translateX(-10%);}
+}
+
+
+/*** Toggle Buttons for Public Access and Production Type adapted from Codepen ***/
+
+#togglebox {
+  right: 35px;
+  bottom: 130px;
+  position: absolute;
+  width: 200px;
+  height: 350px;
+  padding: 15px;
+  background: linear-gradient(180deg, #e69219, #3b1c00, #e69219);
+  box-shadow: 0 5px #999;
+  color: #fff;
+  border-style: double;
+  border-width: 4px;
+  border-color: #fff;
+  border-radius: 10px;
+  font-weight: 500;
+  justify-content: space-between;
+}
+
+/*** Radio button CSS styling taken from codepen by Gurpreet Kaur ***/
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 27px;
+    cursor: pointer;
+    line-height: 25px;
+    display: inline-block;
+    color: #fff;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #ef9d10;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+/*** Map Buttons ***/
+#Map-extent-button {
+        display: block;
+        position: fixed;
+        top: 55px;
+        right: 0px;
+        margin: 50px;
+        margin-top: 0px;
+        width: 200px;
+        height: 50px;
+        padding: 5px;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        border-radius: 20px;
+        border-style: double;
+        font-size: 16px;
+        font-family: 'Unbounded', cursive;
+        font-weight: 600;
+        text-align: center;
+        color: #fff;
+        background: linear-gradient(180deg, #e69219, #7f4b15, #e69219);
+        box-shadow: 0 5px #999;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        -webkit-animation: pulse 1.5s infinite;
+    }
+#Map-extent-button:hover {background: #ef9d10}
+#Map-extent-button:active {
+  background-color: #ef9d10;
+  box-shadow: 0 5px #666;
+  transform: translateY(5px);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+@-webkit-keyframes pulse {
+  0% {
+    @include transform(scale(.9));
+  }
+  70% {
+    @include transform(scale(1));
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+    100% {
+    @include transform(scale(.9));
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
+}
+
+/*** Pop Up ***/
+.mapboxgl-popup-content {
+  border-color: #eacc15;
+  border-radius: 20px;
+  border-style: double;
+  background-color: #b85b0a;
+  color: #fff;
+  max-width: 300px;
+  border-style: single;
+  border-radius: 10px;
+  font-family: 'Unbounded', cursive;
+  font-weight: 400;
+  text-align: center;
+}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip {
+    border-top-color: #00000;
+    }
+}
+/*** Linked Popup ***/
+.label-popup .mapboxgl-popup-content {
+  background: rgba(0, 0, 60, 0.7);
+  border-top: 0px black;
+  padding: 20px;
+  color: white;
+  font-family: 'Unbounded', cursive;
+  font-size:10px;
+  padding: 6px;
+}
+
+/*** Create Legend Formatting for Distillery Regions on Map***/
+
+#legend {
+  position: fixed;
+  background: linear-gradient(180deg, #e69219, #3b1c00, #e69219);
+  padding: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 30px;
+  height: 270px;
+  bottom: 130px;
+  left: 285px;
+  width: 200px;
+  border-width: 4px;
+  border-radius: 10px;
+  border-style: double;
+  box-shadow: 0 5px #999;
+}
+
+#lg {
+  display: inline;
+  right: 40px;
+}
+#lg-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bolder;
+  text-decoration: underline;
+  font-weight: 700;
+}
+#lg-bg {
+  position: absolute;
+  display: inline;
+  width: 20px;
+  right: 40px;
+}
+#lg-wd {
+  position: ;
+  display: inline-block;
+  width: 200px;
+  left: 160px;
+  font-size: 14px;
+}
+
+.legend-key-bg {
+  margin: 0px;
+  column-gap: 10px;
+  display: inline-block;
+  border-radius: 8px;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+}
+#legend-key-bg-car {
+  border-radius: 10px;
+  margin: 20px;
+  width: 5px;
+  height: 5px;
+  padding: 1px;
+}
+#legend-key-wd-car {
+  width: 10px;
+}
+.legend-key-wd {
+  margin: 10px;
+  display: list;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  right: 80px;
+  column-gap: 10px;
+}
+
+/*** Distillery Website Sidebar ***/
+#map-nav {
+  position: absolute;
+  text-align:center;
+  top: 0;
+  left: 0;
+  background: #fff;
+  font-family: 'Unbounded', cursive;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+/*** Sidelink for Map wesbite to distillery coordinates taken from filter features in codepen/mapbox ***/
+
+#websitelink {
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  width: 250px;
+  height: 87.5%;
+  font-family: 'Unbounded', cursive;
+  overflow: hidden;
+  background: linear-gradient(180deg, #e69219, #7f4b15, #e69219);
+  color: #fff;
+  border-radius: 10px;
+  border-style: double;
+}
+.map-overlay fieldset {
+	display: none;
+	background: #ddd;
+	border: none;
+	padding: 10px;
+	margin: 0;
+}
+
+.map-overlay input {
+	display: block;
+	border: none;
+	width: 100%;
+	border-radius: 3px;
+	padding: 10px;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.map-overlay .listing {
+	overflow: auto;
+	max-height: 87.5%;
+}
+
+.map-overlay .listing > * {
+	display: block;
+	padding: 5px 10px;
+	margin: 0;
+}
+
+.map-overlay .listing a {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	color: #fff;
+	text-decoration: none;
+}
+
+.map-overlay .listing a:last-child {
+	border: none;
+}
+
+.map-overlay .listing a:hover {
+	background: #ef9d10;
+}

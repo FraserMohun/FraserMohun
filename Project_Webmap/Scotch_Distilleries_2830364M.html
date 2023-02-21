@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - 2830364M_Webmap</title>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+
+<head>
+
+  <!--Connect Google fonts to the code!-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+   <!--- Connect to Font Awesome CSS !--->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+  <!--- Connect to Mapbox JS API !--->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+  
+   <!--- Connect to JQuery Library !--->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" charset-"utf-8"></script>
+        
+   <!-- ===== MAIN JS ===== -->
+  <script src="assets/js/main.js"></script>
+
+  
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+  
+
+</head>
+<body>
+ 
+<div id='map'></div>
+     
+ <!-- Map Overlays for both the Map Title and Features, which is the running factbox loop !-->
+  <div class="map-overlay" id="title"><span style = "font-size:28px" >Scottish Whisky</span> <br>
+  <span style = "font-size:38px;font-weight:700; vertical-align: 25%">Distilleries</span>
+  </div> 
+
+ <!-- Information bar and running factbox, taken from Codepen !-->  
+  
+  <div class="map-overlay" id="features"><span class="marqueeStyle2">&nbsp; ┊ ┊ <span style = "font-size:36px" >Failte!</span> ┊ ┊ Browse the Map and find your favourite distilleries across Scotland.  ┊ ┊  Click on a <span style = "color:#ef9d10;font-weight:700">dram</span>, to find out more on each whisky! ┊ ┊ The dataset for this project is found here <a href="https://datashare.ed.ac.uk/handle/10283/2580?show=full">Data Source</a>  ┊ ┊  Toggle the <span style = "color:#ef9d10;font-weight:700">navigation menu</span> to find out more on different attributes of distilleries ┊ ┊ Scotch Whisky is made from only 3 Ingredients; <span style = "color:#ef9d10;font-weight:700">Water, Cereals and Yeast!</span>  ┊ ┊ Scotch Malt Whisky must be matured in Oak Barrels for a minimum of 3 years ┊ ┊ The Scottish Whisky industry accounts for <span style = "color:#ef9d10;font-weight:700">75%</span> of all the nations food and drink exports!  ┊ ┊  <span style = "color:#ef9d10;font-weight:700">44</span> bottles of whisky are exported from Scotland every second !  ┊ ┊  Many Distilleries are "Celebrity Famous", with <span style = "color:#ef9d10;font-weight:700">Dalmore Whisky</span> used in James Bond, and <span style = "color:#ef9d10;font-weight:700">Glenmorangie Whisky</span> in the film Highlander!  ┊ ┊  The most expensive bottle of Scotch Whisky to be sold was a Macallan 1926, which was auctioned for <span style = "color:#ef9d10;font-weight:700">$1.9 Million!</span></span> 
+  </div>
+  
+<!-- Linked Website sidelist to show popup and search for futher information !-->
+<div class="map-overlay" id="websitelink">
+	<fieldset>
+		<input id="feature-filter" type="text" placeholder="Click Name for Websites!">
+	</fieldset>
+	<div id="feature-listing" class="listing"><img src="https://media.tenor.com/cre5dUFcO-0AAAAi/whiskey-pouring-drink.gif" width="200" height="200" alt="This will display an animated GIF"></div>
+</div> 
+  
+  <!-- Toggle buttons for distillery properties !-->
+<div class="map-overlay" id="togglebox"> 
+ 
+  <div class="row" id="filters"> 
+    
+    <div>
+    <h8>Display All</h8>
+      
+       <input id='all' type='radio' name='toggle' value='all' checked='checked'>
+         <label for='all'>Distilleries</label>
+      
+    </div>
+    <br>
+    <div>
+    <h9>Public Access</h9>
+     
+        <input id='Open' type='radio' name='toggle' value='Open'>
+          <label for='Open'>Open</label>
+      
+        <input id='Closed' type='radio' name='toggle' value="Closed">
+          <label for='Closed'>Closed</label>
+    
+    </div>
+    <br>
+    <div>
+    <h10>Production Type</h10>
+
+        <input id='Malt' type='radio' name='toggle' value='Malt'>
+          <label for='Malt'>Malt</label>
+      
+        <input id='Grain' type='radio' name='toggle' value='Grain'>
+          <label for='Grain'>Grain</label>
+      
+    </div>
+
+</div> 
+
+<!-- Create Legend for Regional Areas !--> 
+ <div class="map-overlay" id="legend">
+    <div id="lg-title">Regions</div>
+    <div id="lg">
+      <div class="lg-bg" id="lg-bg">
+      </div>
+      <div class="lg-wd" id="lg-wd">
+      </div>
+    </div>
+  </div>
+
+<!-- Create a return to extent button !-->
+<button id="Map-extent-button">Return to Map</button>
+
+<!-- Live Visitor Counter from Elfsight Apps!-->
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-de560183-5cad-4829-8258-32347178fd56"></div>
+  
+</body>
+</html>
+<!-- partial -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
